@@ -1,10 +1,14 @@
 package com.training.android.prelimexam;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by Dyste on 12/15/2016.
  */
 
-public class Task {
+public class Task implements Serializable{
 
     private String Title;
     private String Desc;
@@ -14,7 +18,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String desc, String title,String time, String date) {
+    public Task(String title , String desc,String time, String date) {
         Desc = desc;
         Title = title;
         Time = time;

@@ -1,7 +1,6 @@
 package com.training.android.prelimexam;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -13,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FloatingActionButton fabAdd;
+    Task temp = null;
+    private EditText mEtTitle, mEtDesc, mEtTime, mEtDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +47,32 @@ public class MainActivity extends AppCompatActivity {
                 final Dialog addTask = new Dialog(MainActivity.this);
                 addTask.setContentView(R.layout.activity_input);
                 addTask.setTitle("Add A New Task");
-
-                TextView mEtTitle = (TextView) addTask.findViewById(R.id.etTitle);
-                TextView mEtDesc = (TextView) addTask.findViewById(R.id.etDesc);
-                TextView mEtTime = (TextView) addTask.findViewById(R.id.etTime);
-                TextView mEtDate = (TextView) addTask.findViewById(R.id.etDate);
+                addTask.show();
+                mEtTitle = (EditText) addTask.findViewById(R.id.etTitle);
+                mEtDesc = (EditText) addTask.findViewById(R.id.etDesc);
+                mEtTime = (EditText) addTask.findViewById(R.id.etTime);
+                mEtDate = (EditText) addTask.findViewById(R.id.etDate);
                 Button mBtnConfirm = (Button) addTask.findViewById(R.id.btnConfirm);
 
-                Task temp = new Task(mEtDesc.toString(), mEtTitle.toString(), mEtTime.toString(), mEtDate.toString());
-                tasks.add(temp);
 
                 mBtnConfirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         addTask.dismiss();
+                        temp = new Task(mEtTitle.getText().toString(), mEtDesc.getText().toString()
+                                , mEtTime.getText().toString(), mEtDate.getText().toString());
+                        tasks.add(temp);
+                        Bundle b = new Bundle();
+                        b.putSerializable("arraylist", tasks);
+                        TodoFragment todoFragment = new TodoFragment();
+                        todoFragment.setArguments(b);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.viewpager, todoFragment)
+                                .commit();
+
                     }
                 });
-                addTask.show();
+
             }
         });
     }
@@ -102,4 +112,6 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+
 }
