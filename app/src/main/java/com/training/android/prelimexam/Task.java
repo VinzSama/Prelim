@@ -8,13 +8,17 @@ public class Task {
 
     private String Title;
     private String Desc;
+    private String Time;
+    private String Date;
 
     public Task() {
     }
 
-    public Task(String desc, String title) {
+    public Task(String desc, String title,String time, String date) {
         Desc = desc;
         Title = title;
+        Time = time;
+        Date = date;
     }
 
     public String getDesc() {
@@ -31,5 +35,21 @@ public class Task {
 
     public void setTitle(String title) {
         Title = title;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 }
