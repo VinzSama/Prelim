@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 addTask.show();
             }
         });
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
