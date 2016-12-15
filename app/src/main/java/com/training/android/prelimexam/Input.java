@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 public class Input extends AppCompatActivity {
 
-    private EditText mEtTitle,mEtDesc;
+    private EditText mEtTitle,mEtDesc,mEtTime,mEtDate;
 
 
     @Override
