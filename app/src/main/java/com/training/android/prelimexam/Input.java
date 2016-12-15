@@ -16,7 +16,7 @@ public class Input extends AppCompatActivity {
         mEtTitle = (EditText) findViewById(R.id.etTitle);
         mEtDesc = (EditText) findViewById(R.id.etDesc);
         mEtTime = (EditText) findViewById(R.id.etTime);
-        mEtTitle = (EditText) findViewById(R.id.etDate);
+        mEtDate = (EditText) findViewById(R.id.etDate);
 
         Task task = new Task(mEtTitle.getText().toString(),mEtDesc.getText().toString(), mEtTime.toString(), mEtDate.toString());
 
